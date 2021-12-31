@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>
+        {% block title %}
+        {{x}}
+        {% endblock %}
+    </title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+</head>
+
+<body style="background-color:#6F31F3;">
+
+        <a href="{{url_for('search_name')}}"><button style="width: 143px;height: 50px;position: absolute;top: 27px;left: 28px;overflow: hidden;">Back</button></a>
+        <div style="width: 90%;height: 70%;position: relative;top: 93px;left: 50px;overflow: hidden;background-color:#C4C4C4;">
+            <p><strong>These keywords get more views when used in video titles:</strong></p>
+        {% for word in words %}
+            <p style="padding-left:20px;"><strong>{{word}}</strong></p>
+        {% endfor %}
+
+            <p><strong>The average time duration for most viewed videos is: {{time}}</strong></p>
+        </div>
+ <div  style="width:90%;height: 20%;position:relative;top:100px;left: 50px;overflow: hidden;background-color:#C4C4C4;margin-top:150px;">
+    <form method="POST" action="">
+    <input type="search" name="video_name" placeholder="Title of video" style="margin:30px;background-color:#C4C4C4;"/>
+    <input type="number" name="video_duration" placeholder="Duration of video" style="margin:30px;background-color:#C4C4C4;"/>
+    <input type="search" name="day" placeholder="Day video was uploaded" style="margin:30px;background-color:#C4C4C4;"/>
+    <input type="date" name="days" placeholder="Date the video was uploaded" style="margin:30px;background-color:#C4C4C4;"/>
+    <input type="time" name="time" placeholder="Time of day the video was uploaded" style="margin:30px;background-color:#C4C4C4;"/>
+<p>
+    <div style="text-align:center;">
+        <button type="submit" style="text-align:center;background-color:#6F31F3;color:white;">
+        Submit
+    </button>
+    </div>
+
+</p>
+
+    </form>
+    {% if predictions %}
+     <p><h4 style="text-align:center;">The estimated amount of views for the following parameters is:  {{predictions}}</h4></p>
+     {% endif %}
+</body>
+
+</html>
+

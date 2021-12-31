@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>
+        {% block title %}
+        {{x}}
+        {% endblock %}
+    </title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+</head>
+
+<body style="background-color:#6F31F3;">
+
+        <a href="{{url_for('search_name')}}"><button style="width: 143px;height: 50px;position: absolute;top: 27px;left: 28px;overflow: hidden;">Back</button></a>
+        <div style="width: 90%;height: 70%;position: relative;top: 93px;left: 50px;overflow: hidden;background-color:#C4C4C4;">
+		<table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Dates</th>
+                    <th scope="col">Video Name</th>
+                    <th scope="col">Views</th>
+                    <th scope="col">Likes</th>
+                    <th scope="col">Comments</th>
+                    <th scope="col">Percent Change</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in range(length) %}
+                    <tr>
+                        <th scope="row">{{dates[i]}}</th>
+                        <td>{{names[i]}}</td>
+                        <td>{{views[i]}}</td>
+                        <td>{{likes[i]}}</td>
+                        <td>{{comments[i]}}</td>
+                        <td>{{percent[i]}}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        </div>
+ <div  style="width:90%;height: 20%;position:relative;top:100px;left: 50px;overflow: hidden;">
+        <div class="chart" id="lineal">
+        <script>
+            var graphs = {{plot1 | safe}};
+            Plotly.plot('lineal',graphs,{});
+        </script>
+        </div>
+        <div class="chart" id="lineal">
+        <script>
+            var graphs = {{plot2 | safe}};
+            Plotly.plot('lineal',graphs,{});
+        </script>
+        </div>
+        <div class="chart" id="lineal">
+            <script>
+            var graphs = {{plot3 | safe}};
+            Plotly.plot('lineal',graphs,{});
+            </script>
+        </div>
+</div>
+</body>
+
+
+<!--<a href="{{url_for('search_name')}}"><button>Back</button></a>-->
+<!--<table class="table">-->
+<!--  <thead>-->
+<!--    <tr>-->
+<!--      <th scope="col">Dates</th>-->
+<!--      <th scope="col">Video Name</th>-->
+<!--      <th scope="col">Views</th>-->
+<!--      <th scope="col">Likes</th>-->
+<!--      <th scope="col">Comments</th>-->
+<!--        <th scope="col">Percent Change</th>-->
+<!--    </tr>-->
+<!--  </thead>-->
+<!--  <tbody>-->
+<!--  {% for i in range(length) %}-->
+<!--    <tr>-->
+<!--      <th scope="row">{{dates[i]}}</th>-->
+<!--      <td>{{names[i]}}</td>-->
+<!--      <td>{{views[i]}}</td>-->
+<!--      <td>{{likes[i]}}</td>-->
+<!--      <td>{{comments[i]}}</td>-->
+<!--        <td>{{percent[i]}}</td>-->
+<!--    </tr>-->
+<!--  {% endfor %}-->
+<!--  </tbody>-->
+<!--</table>-->
+
+
+
+
+</html>
+

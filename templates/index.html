@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>
+        {% block title %}
+        {{x}}
+        {% endblock %}
+    </title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+{% if name %}
+<div class="v1_2">
+    <div class="v1_3"></div>
+    <span class="v1_5"><h3 style="color:white;">Youtube Optimizer</h3></span>
+    <img src="{{profile}}" style="width: 177px;height: 176px;position: absolute;top: 274px;left: 1300px;border-radius: 50%;">
+    <span class="v1_7">Youtuber Name:<h4>{{name}}</h4></span>
+    <div class="v1_8"></div>
+    <div class="v1_9"></div>
+    <span class="v1_10"><a href="" style="color:white;">Contact Us</a></span>
+        <form method="POST" action="">
+        <input type="search" name="channel_name" placeholder="Channel name" style="font-size:20px;background-color:#C4C4C4;width: 410px;height: 60px;position: absolute;top: 181px;left: 46px;overflow: hidden;"/>
+        <button type="submit" style="  width: 60px;height: 61px;position: absolute;top: 180px;left: 456px;overflow: hidden;background-color:#6F31F3;">
+            <i class="fas fa-search"></i>
+        </button>
+        </form>
+
+    <span class="v1_13">Search Youtuber name:</span>
+    <div class="v1_14">
+        <p><h4 style="text-align:center;margin:100px;">Subscribers:   {{subs}}</h4></p>
+        <p><h4 style="text-align:center;margin:100px;">{{date}}</h4></p>
+        <div style="text-align:center;margin:auto;">
+            <a href="{{url_for('video_proj')}}" style="margin:20px;"><button style="height:50px;width:200px;background-color:#6F31F3;color:white;border-radius: 10px;">Channel Growth</button></a>
+        <a href="{{url_for('find_best')}}" style="margin:20px;"><button style="height:50px;width:200px;background-color:#6F31F3;color:white;border-radius: 10px;">Best Videos</button></a>
+        <a href="{{url_for('video_opt')}}" style="margin:20px;"><button style="height:50px;width:200px;background-color:#6F31F3;color:white;border-radius: 10px;">View Optimizer</button></a>
+        </div>
+
+    </div>
+</div>
+{% else %}
+	<div class="v5_21">
+		<div class="v5_31">
+
+		</div>
+		<span class="v5_41">
+		Youtube Optimizer
+		</span>
+	<div class="v5_71">
+
+	</div>
+	<span class="v5_91">Contact Us
+	</span>
+	<span class="v5_111">Search Youtuber name:
+    <div style="margin:auto">
+            <form method="POST" action="">
+        <input type="search" name="channel_name" placeholder="Channel name" style="background-color:#C4C4C4;font-size:20px"/>
+        <button type="submit" style="text-align:center;margin:50px;background-color:#6F31F3;color:white;">
+            Search
+        </button>
+        </form>
+        </div>
+    </span>
+
+
+	</div>
+{% endif %}
+
+</body>
+</html>
+
